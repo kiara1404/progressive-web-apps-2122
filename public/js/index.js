@@ -27,14 +27,15 @@ export async function barcodeDetector() {
             return;
         } else {
             console.log("geslaagd")
+            window.location.href = 'scanner/' + barcodes[0].rawValue
 
         }
 
     }, 2000)
 }
 
-
+// van joeri
 if (window.location.pathname === '/scanner') {
     startVideoEl()
-    // barcodeDetector()
+    barcodeDetector()
 }

@@ -1,6 +1,7 @@
 import express from 'express';
 import ejs from 'ejs';
 import * as path from 'path';
+import { fetchData } from './public/js/modules/fetchData.js'
 
 const app = express();
 const port = 5000;
@@ -17,9 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routing
 app.get('/', index)
 app.get('/scanner', scanner)
-
-
-
+app.get('/scanner/:id', fetchData)
 
 
 function server() {
@@ -33,5 +32,6 @@ function index(req, res) {
 function scanner(req, res) {
     res.render('scanner')
 }
+
 
 app.listen(port, server)
