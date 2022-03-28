@@ -9,7 +9,7 @@ This project is a single page application in vanilla JavaScript that allows you 
 
 #### Clone this repository
 ```
-git clone https://github.com/kiara1404/web-app-from-scratch-2122
+git clone https://github.com/kiara1404/progressive-web-apps-2122
 ```
 
 #### Install packages
