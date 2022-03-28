@@ -1,34 +1,40 @@
-import { startScanner } from './modules/startScanner.js';
-import { handleRoutes } from './modules/routing.js';
+const videoEl = document.querySelector('video')
+async function startVideoEl() {
 
 
-handleRoutes()
+    // access camera
+    const stream = await navigator.mediaDevices.getUserMedia({
+        video: {
+            facingMode: {
+                ideal: "environment"
+            }
+        },
+        audio: false
+    });
 
-
-
-// button scanner 
-export function scanButton(){
-let scanButton = document.querySelector('.scan-product')
-scanButton.addEventListener('click',  () => {
-
-   // changeDisplay()
-    startScanner()
-    
-})
+    // video block ( feedback voor gebruiker)
+    videoEl.srcObject = stream;
+    await videoEl.play();
 }
 
-// change display in css -- niet de beste manier maar werkt voor nu --
-function changeDisplay() {
-    let buttons = document.querySelector('.btn-primary')
-    let products = document.querySelector('.products')
-    let img = document.querySelector('.image')
-    let scanner = document.querySelector('.scanner')
+export async function barcodeDetector() {
+    const barcodeDetector = new BarcodeDetector();
+    window.setInterval(async () => {
+        const barcodes = await barcodeDetector.detect(videoEl);
 
-    buttons.style.display = 'none';
-    products.style.display = 'none';
-    img.style.display = 'none';
-    scanner.style.display = 'block'
+        // stukje code van joeri geplakt, nog even vragen hoe dit zit
+        if (barcodes.length <= 0) {
+            return;
+        } else {
+            console.log("geslaagd")
+
+        }
+
+    }, 2000)
 }
 
 
-// src : https://daily-dev-tips.com/posts/detecting-barcodes-from-the-webcam/
+if (window.location.pathname === '/scanner') {
+    startVideoEl()
+    // barcodeDetector()
+}

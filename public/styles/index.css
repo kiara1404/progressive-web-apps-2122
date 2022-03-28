@@ -70,7 +70,7 @@ main section:first-child > img{
     justify-content: space-evenly;
 }
 
-.wrapper section:nth-child(2) i{
+.btn-primary i{
     background-color: #fff;
     color: rgb(91, 187, 131);
     padding: 50px;
@@ -80,13 +80,13 @@ main section:first-child > img{
 }
 
 
-.wrapper section:nth-child(3) article {
+.products article {
     margin-top: 30px;
     color: #fff;
     opacity: 0.8;
 }
 
-.wrapper section:nth-child(3) header {
+.products header {
     margin-top: 70px;
     width: 100vw;   
     display: flex;
@@ -95,7 +95,7 @@ main section:first-child > img{
 
 }
 
-.wrapper section:nth-child(3) header h2 {
+.products header h2 {
     width: 250px;
     height: 30px;
     font-size: 1.5em;
@@ -124,9 +124,11 @@ svg{
     margin: 30px auto -30px;
 }
 .scanner {
-    height: 100vh;
-    display: none;
-    overflow: scroll;
+    margin: 30px auto 0;
+    height: 60vh;
+    width: 70vw;
+    overflow: hidden;
+    
 
 }
 
@@ -239,11 +241,9 @@ margin: 0 auto;
 
 /* einde main */
 
-
-.active{
-    display: block ;
-}
-
-.hide {
-    display: none;
+@media only screen and (max-width: 600px){
+    .scanner{
+        width: 100vw;
+        height: 50vh;
+    }
 }
